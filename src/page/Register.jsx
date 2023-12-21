@@ -26,9 +26,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col item-center justify-center border p-5 my-10">
-      <h1 className="text-4xl text-center font-bold">Register</h1>
-
+    <div className="flex flex-col item-center justify-center border p-5">
       <div className="mt-20 ">
         <Helmet>
           <title>Task Manager | SignUp</title>
@@ -37,8 +35,11 @@ const Register = () => {
         <Toaster></Toaster>
 
         <div className="container mx-auto">
-          <div>
-            <h1 className="text-center text-3xl font-medium ">Sign Up</h1>
+          <div className="text-center">
+            <h1 className="text-4xl inline-block border-l-8 border-dp-color text-ds-color px-2 font-bold ">
+              {" "}
+              Sign Up
+            </h1>
           </div>
           <div>
             <div className="max-w-lg mx-auto p-10">
@@ -48,16 +49,13 @@ const Register = () => {
                     className="flex flex-col items-center justify-center"
                     onSubmit={handleSubmit(onSubmit)}
                   >
-                    {/*  */}
-                    {/*  */}
-
                     <div className="w-full max-w-sm">
                       <label className="label">
                         <span className="label-text">Your Name</span>
                       </label>
                       <input
                         type="text"
-                        className="input input-bordered input-info w-full max-w-sm"
+                        className="input input-bordered hover:input-info ease-in-out duration-500 focus:ring w-full max-w-sm"
                         {...register("name", {
                           required: "Name is required *",
                         })}
@@ -76,7 +74,7 @@ const Register = () => {
 
                       <input
                         type="email"
-                        className="input input-bordered input-info w-full max-w-sm"
+                        className="input input-bordered hover:input-info ease-in-out duration-500 focus:ring w-full max-w-sm"
                         {...register("email", {
                           required: "Email Address is required *",
                         })}
@@ -95,7 +93,7 @@ const Register = () => {
 
                       <input
                         type="url"
-                        className="input input-bordered input-info w-full max-w-sm"
+                        className="input input-bordered hover:input-info ease-in-out duration-500 focus:ring w-full max-w-sm"
                         {...register("photoUrl", {
                           required: "Photo URL is required *",
                         })}
@@ -115,7 +113,7 @@ const Register = () => {
                       <div className="relative">
                         <input
                           type={isPasswordType ? "password" : "text"}
-                          className="input input-bordered input-info w-full max-w-sm pr-10"
+                          className="input input-bordered hover:input-info ease-in-out duration-500 focus:ring w-full max-w-sm pr-10"
                           {...register("password", {
                             required: true,
                             minLength: 6,
@@ -164,8 +162,10 @@ const Register = () => {
                       )}
                     </div>
 
-                    <div className="my-8">
-                      <button className="btn btn-neutral">Sign Up</button>
+                    <div className="my-8 w-full max-w-sm rounded-full">
+                      <button className="btn btn-neutral w-full">
+                        Sign Up
+                      </button>
                     </div>
                   </form>
                   <div className="divider max-w-sm mx-auto">or</div>
