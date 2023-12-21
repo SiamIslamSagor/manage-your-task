@@ -10,8 +10,8 @@ import {
 
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
-import auth from "../config/firebase.config";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import auth from "../../firebase.config";
 
 export const AuthContext = createContext(null);
 
