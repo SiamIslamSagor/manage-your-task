@@ -1,16 +1,24 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FaGoogle } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEyeSharp } from "react-icons/io5";
+import useDataContext from "../hooks/useDataContext";
 
 const Register = () => {
   // state
   const [isPasswordType, setIsPasswordType] = useState(true);
+
+  // context data
+  const { createUser, googleLogin, updateUserData, setLoading, loading } =
+    useDataContext();
+
+  // hooks
+  const navigate = useNavigate();
 
   // hook form
   const {
@@ -23,6 +31,54 @@ const Register = () => {
   // handler
   const onSubmit = data => {
     console.log(data);
+
+    const toastId = toast.loading("processing...");
+
+    const { name, email, photoUrl, password } = data;
+    console.log(Object.keys(data).join(","));
+    ///////////
+
+    createUser(email, password)
+      .then(res => {
+        console.log(res.user);
+        updateUserData(name, photoUrl)
+          .then(() => {
+            // post user data to database
+            console.log("profile updated");
+            reset();
+            setLoading(!loading);
+            navigate("/auth/login");
+          })
+          .catch(() => {
+            toast.error("Failed to create account.", { id: toastId });
+          });
+        toast.success("Account created successfully.", {
+          id: toastId,
+        });
+      })
+      .catch(() => {
+        toast.error("Failed to create account.", { id: toastId });
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    const toastId = toast.loading("processing...");
+
+    googleLogin()
+      .then(res => {
+        const userData = {
+          email: res?.user?.email,
+          name: res?.user?.displayName,
+        };
+
+        console.log("login done, now send this data to backend", userData);
+
+        toast.success("Log In successfully.", { id: toastId });
+        navigate("/auth/login");
+      })
+      .catch(() => {
+        toast.error("Failed to login.", { id: toastId });
+      });
   };
 
   return (
@@ -170,7 +226,10 @@ const Register = () => {
                   </form>
                   <div className="divider max-w-sm mx-auto">or</div>
                   <div className="max-w-sm mx-auto text-center">
-                    <button className="btn rounded-full w-full md:text-base">
+                    <button
+                      onClick={handleGoogleLogin}
+                      className="btn rounded-full w-full md:text-base"
+                    >
                       Sign up with google <FaGoogle></FaGoogle>
                     </button>
                   </div>

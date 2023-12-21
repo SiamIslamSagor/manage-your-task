@@ -1,17 +1,23 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa6";
+import useDataContext from "../hooks/useDataContext";
 
 const Login = () => {
   // state
   const [isPasswordType, setIsPasswordType] = useState(true);
 
+  // context data
+  const { logIn, googleLogin } = useDataContext();
+
+  // hooks
+  const navigate = useNavigate();
   // hook form
   const {
     register,
@@ -23,6 +29,38 @@ const Login = () => {
   // handler
   const onSubmit = data => {
     console.log(data);
+    const toastId = toast.loading("processing...");
+
+    const { email, password } = data;
+    console.log(data);
+    console.log(email, password);
+    logIn(email, password)
+      .then(res => {
+        console.log(res);
+        reset();
+        toast.success("Log In successfully.", { id: toastId });
+        navigate("/dashboard");
+      })
+      .catch(() => {
+        toast.error("Failed to login.", { id: toastId });
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    const toastId = toast.loading("processing...");
+
+    googleLogin()
+      .then(() => {
+        console.log("google login successfully in login page.");
+
+        //  post user data to database
+
+        toast.success("Log In successfully.", { id: toastId });
+        navigate("/dashboard");
+      })
+      .catch(() => {
+        toast.error("Failed to login.", { id: toastId });
+      });
   };
 
   return (
@@ -108,7 +146,10 @@ const Login = () => {
               </form>
               <div className="divider max-w-sm mx-auto">or</div>
               <div className="max-w-sm mx-auto text-center">
-                <button className="btn rounded-full w-full md:text-base">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="btn rounded-full w-full md:text-base"
+                >
                   continue with google <FaGoogle></FaGoogle>
                 </button>
               </div>
