@@ -3,7 +3,6 @@ import logo from "../assets/taskText.png";
 const Footer = () => {
   return (
     <div className="flex flex-col item-center justify-center  ">
-      <h1 className="text-4xl text-center font-bold">Footer</h1>
       {/* footer start */}
       <div className="bg-ds-color">
         <footer className="footer p-10 container mx-auto text-white">

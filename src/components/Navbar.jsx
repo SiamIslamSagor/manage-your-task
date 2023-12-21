@@ -90,7 +90,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" ">
+    <div className="fixed w-full z-[11] drop-shadow-lg shadow-xl">
       <div className="max-h-14 ">
         <nav className="relative z-10">
           <div className="navbar bg-ls-color">
