@@ -8,6 +8,11 @@ import Dashboard from "./layout/Dashboard";
 import TaskManager from "./page/TaskManager";
 import ErrorPage from "./page/ErrorPage";
 import { HelmetProvider } from "react-helmet-async";
+import CreateTask from "./page/CreateTask";
+import ManageTask from "./page/ManageTask";
+import Auth from "./layout/Auth";
+import Login from "./page/Login";
+import Register from "./page/Register";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +27,21 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/auth",
+    errorElement: <ErrorPage />,
+    element: <Auth />,
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login />,
+      },
+      {
+        path: "/auth/register",
+        element: <Register />,
+      },
+    ],
+  },
+  {
     path: "/dashboard",
     errorElement: <ErrorPage />,
     element: <Dashboard />,
@@ -29,6 +49,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/task-manager",
         element: <TaskManager />,
+      },
+      {
+        path: "/dashboard/create-task",
+        element: <CreateTask />,
+      },
+      {
+        path: "/dashboard/manage-task",
+        element: <ManageTask />,
       },
     ],
   },

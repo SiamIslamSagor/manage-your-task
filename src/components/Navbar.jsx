@@ -15,25 +15,25 @@ const Navbar = () => {
       </div>
 
       <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="text-ds-color" to={"/sadf"}>
+        <NavLink className="text-ds-color" to={"/dashboard/create-task"}>
           Add Task
         </NavLink>
       </div>
 
       <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="text-ds-color" to={"/dfg"}>
+        <NavLink className="text-ds-color" to={"/dashboard/manage-task"}>
           Manage Task
         </NavLink>
       </div>
 
       <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="text-ds-color" to={"/dfg"}>
+        <NavLink className="text-ds-color" to={"/dashboard/task-manager"}>
           Dashboard
         </NavLink>
       </div>
 
       <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="text-ds-color" to={"/dfg"}>
+        <NavLink className="text-ds-color" to={"/auth/login"}>
           Login
         </NavLink>
       </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
           className="text-ds-color text-4xl text-center font-bold"
-          to={"/sjdkl"}
+          to={"/dashboard/create-task"}
         >
           Add Task
         </NavLink>
@@ -63,7 +63,7 @@ const Navbar = () => {
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
           className="text-ds-color text-4xl text-center font-bold"
-          to={"/sjdkl"}
+          to={"/dashboard/manage-task"}
         >
           Manage Task
         </NavLink>
@@ -72,7 +72,7 @@ const Navbar = () => {
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
           className="text-ds-color text-4xl text-center font-bold"
-          to={"/sjdkl"}
+          to={"/dashboard/task-manager"}
         >
           Dashboard
         </NavLink>
@@ -81,7 +81,7 @@ const Navbar = () => {
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
           className="text-ds-color text-4xl text-center font-bold"
-          to={"/sjdkl"}
+          to={"/auth/login"}
         >
           Login
         </NavLink>
