@@ -8,26 +8,32 @@ const Navbar = () => {
 
   const lgRoutes = (
     <>
-      <div className="lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="" to={"/"}>
+      <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
+        <NavLink className="text-ds-color" to={"/"}>
+          Home
+        </NavLink>
+      </div>
+
+      <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
+        <NavLink className="text-ds-color" to={"/sadf"}>
           Add Task
         </NavLink>
       </div>
 
-      <div className="lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="" to={"/"}>
+      <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
+        <NavLink className="text-ds-color" to={"/dfg"}>
           Manage Task
         </NavLink>
       </div>
 
-      <div className="lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="" to={"/"}>
+      <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
+        <NavLink className="text-ds-color" to={"/dfg"}>
           Dashboard
         </NavLink>
       </div>
 
-      <div className="lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="" to={"/"}>
+      <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
+        <NavLink className="text-ds-color" to={"/dfg"}>
           Login
         </NavLink>
       </div>
@@ -36,26 +42,47 @@ const Navbar = () => {
 
   const maxLgRoutes = (
     <>
-      <div className="flex flex-col item-center justify-center border p-5 my-10">
-        <NavLink className="text-4xl text-center font-bold" to={"/"}>
+      <div className="nav-div flex item-center justify-center border p-5 my-2">
+        <NavLink
+          className="text-ds-color text-4xl text-center font-bold"
+          to={"/"}
+        >
+          Home
+        </NavLink>
+      </div>
+
+      <div className="nav-div flex item-center justify-center border p-5 my-2">
+        <NavLink
+          className="text-ds-color text-4xl text-center font-bold"
+          to={"/sjdkl"}
+        >
           Add Task
         </NavLink>
       </div>
 
-      <div className="flex flex-col item-center justify-center border p-5 my-10">
-        <NavLink className="text-4xl text-center font-bold" to={"/"}>
+      <div className="nav-div flex item-center justify-center border p-5 my-2">
+        <NavLink
+          className="text-ds-color text-4xl text-center font-bold"
+          to={"/sjdkl"}
+        >
           Manage Task
         </NavLink>
       </div>
 
-      <div className="flex flex-col item-center justify-center border p-5 my-10">
-        <NavLink className="text-4xl text-center font-bold" to={"/"}>
+      <div className="nav-div flex item-center justify-center border p-5 my-2">
+        <NavLink
+          className="text-ds-color text-4xl text-center font-bold"
+          to={"/sjdkl"}
+        >
           Dashboard
         </NavLink>
       </div>
 
-      <div className="flex flex-col item-center justify-center border p-5 my-10">
-        <NavLink className="text-4xl text-center font-bold" to={"/"}>
+      <div className="nav-div flex item-center justify-center border p-5 my-2">
+        <NavLink
+          className="text-ds-color text-4xl text-center font-bold"
+          to={"/sjdkl"}
+        >
           Login
         </NavLink>
       </div>
@@ -66,7 +93,7 @@ const Navbar = () => {
     <div className=" ">
       <div className="max-h-14 ">
         <nav className="relative z-10">
-          <div className="navbar bg-slate-400">
+          <div className="navbar bg-ls-color">
             {/* logo */}
             <div className="flex-1">
               <a href="/" className="cursor-pointer">

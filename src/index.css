@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 div > a.active {
-  /* border-bottom: 3px solid #f86f03; */
-  color: #03045e;
+  color: #222831;
   font-weight: bold;
 }
 
@@ -20,8 +19,8 @@ div > a.active {
   height: 3px;
   width: 0;
   left: 0;
-  bottom: -3px;
-  transition: 0.5s;
+  bottom: -8px;
+  transition: all 0.5s ease;
 }
 
 a:hover::after {
