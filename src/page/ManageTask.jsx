@@ -1,12 +1,18 @@
 import { HiDotsVertical } from "react-icons/hi";
 import useTask from "../hooks/useTask";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import useAxiosPublic from "../hooks/useAxios";
+import toast from "react-hot-toast";
 
 const ManageTask = () => {
   // state
   const [clickedTaskData, setClickedTaskData] = useState("");
+
   // hooks
-  const { allTaskData } = useTask();
+  const axiosPublic = useAxiosPublic();
+
+  const { allTaskData, refetch } = useTask();
   console.log(allTaskData);
 
   // handler
@@ -17,6 +23,26 @@ const ManageTask = () => {
     setClickedTaskData(clickedTask);
     console.log(clickedTask);
   };
+
+  const handleDeleteTask = id => {
+    const toastId = toast.loading("processing...");
+
+    console.log(id);
+    // delete task from database
+    axiosPublic
+      .delete(`/task/delete/${id}`)
+      .then(res => {
+        console.log(res);
+        refetch();
+        toast.success("task deleted successfully.", {
+          id: toastId,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  // handler
 
   return (
     <div className="flex flex-col item-center justify-center border p-5 my-10">
@@ -117,9 +143,40 @@ const ManageTask = () => {
           <p className="py-1">Deadline : {clickedTaskData?.deadlines}</p>
           <p className="py-1">Status : {clickedTaskData?.status}</p>
           <p>_id is : {clickedTaskData?._id}</p>
-          <div className="flex justify-end gap-5">
-            <button className="btn btn-sm btn-neutral px-5">Update</button>
-            <button className="btn btn-sm btn-warning px-5">Delete</button>
+          <div className="flex justify-end gap-5 mt-5">
+            <Link to={`/dashboard/update/${clickedTaskData?._id}`}>
+              <button className="btn btn-sm btn-neutral px-5">Update</button>
+            </Link>
+
+            <button
+              onClick={() => handleDeleteTask(clickedTaskData?._id)}
+              className="btn btn-sm btn-warning px-5"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </dialog>
+      <dialog id="my_modal_4" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button
+              type="submit"
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </button>
+          </form>
+          {/* update form */}
+
+          <div className="flex justify-end gap-5 mt-5">
+            <button
+              onClick={() => handleUpdateTask(clickedTaskData?._id)}
+              className="btn mx-auto btn-sm btn-neutral px-5"
+            >
+              Confirm
+            </button>
           </div>
         </div>
       </dialog>

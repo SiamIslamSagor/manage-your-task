@@ -62,7 +62,7 @@ const CreateTask = () => {
       <h1 className="text-4xl text-center font-bold">CreateTask</h1>
       <div className="mt-20 ">
         <Helmet>
-          <title>Task Manager | SignUp</title>
+          <title>Task Manager | Create Task</title>
         </Helmet>
 
         <Toaster></Toaster>

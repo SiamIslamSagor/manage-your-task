@@ -10,6 +10,7 @@ import Register from "../page/Register";
 import Auth from "../layout/Auth";
 import Main from "../layout/Main";
 import PrivetRoute from "./PrivetRoute";
+import UpdateTask from "../page/UpdateTask";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,6 +68,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <ManageTask />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "update/:id",
+        element: (
+          <PrivetRoute>
+            <UpdateTask />
           </PrivetRoute>
         ),
       },
