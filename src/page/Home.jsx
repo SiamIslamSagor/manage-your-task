@@ -1,8 +1,8 @@
 import Navbar from "../components/Navbar";
-import Banner from "../components/banner";
 import WhoUseUs from "../components/WhoUseUs";
 import Footer from "../components/Footer";
 import { Toaster } from "react-hot-toast";
+import Banner from "../components/Banner";
 
 const Home = () => {
   return (
