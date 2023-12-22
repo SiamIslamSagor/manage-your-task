@@ -48,15 +48,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <TaskManager />,
+        element: (
+          <PrivetRoute>
+            <TaskManager />
+          </PrivetRoute>
+        ),
       },
       {
         path: "create-task",
-        element: <CreateTask />,
+        element: (
+          <PrivetRoute>
+            <CreateTask />
+          </PrivetRoute>
+        ),
       },
       {
         path: "manage-task",
-        element: <ManageTask />,
+        element: (
+          <PrivetRoute>
+            <ManageTask />
+          </PrivetRoute>
+        ),
       },
     ],
   },

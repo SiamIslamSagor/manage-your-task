@@ -3,10 +3,10 @@ import { Navigate, useLocation } from "react-router-dom";
 import useDataContext from "../hooks/useDataContext";
 
 const PrivetRoute = ({ children }) => {
-  const { user, UserLoading } = useDataContext();
+  const { user, loading } = useDataContext();
   const location = useLocation();
 
-  if (UserLoading) {
+  if (loading) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center ">
         <div className="loader"></div>

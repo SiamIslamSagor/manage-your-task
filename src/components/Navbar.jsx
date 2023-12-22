@@ -33,6 +33,7 @@ const Navbar = () => {
         logOut()
           .then(() => {
             toast.success("Log out successfully.", { id: toastId });
+            setOpen(!isOpen);
           })
           .catch(() => {
             toast.error("Log out Failed.", { id: toastId });
@@ -91,6 +92,7 @@ const Navbar = () => {
     <>
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
+          onClick={() => setOpen(!isOpen)}
           className="text-ds-color text-4xl text-center font-bold"
           to={"/"}
         >
@@ -100,6 +102,7 @@ const Navbar = () => {
 
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
+          onClick={() => setOpen(!isOpen)}
           className="text-ds-color text-4xl text-center font-bold"
           to={"/dashboard/create-task"}
         >
@@ -109,6 +112,7 @@ const Navbar = () => {
 
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
+          onClick={() => setOpen(!isOpen)}
           className="text-ds-color text-4xl text-center font-bold"
           to={"/dashboard/manage-task"}
         >
@@ -118,6 +122,7 @@ const Navbar = () => {
 
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
+          onClick={() => setOpen(!isOpen)}
           className="text-ds-color text-4xl text-center font-bold"
           to={"/dashboard"}
         >
@@ -137,6 +142,7 @@ const Navbar = () => {
       ) : (
         <div className="nav-div flex item-center justify-center border p-5 my-2">
           <NavLink
+            onClick={() => setOpen(!isOpen)}
             className="text-ds-color text-4xl text-center font-bold"
             to={"/auth/login"}
           >

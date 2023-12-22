@@ -21,8 +21,8 @@ const WhoUseUs = () => {
             teams collaborating on complex projects, our platform adapts to your
             unique needs.
           </p>
-          <Link to={"/auth/login"}>
-            <button className="btn btn-neutral btn-sm lg:btn-md max-sm:btn-sm md:text-lg text-lp-color bg-ds-color mt-5 lg:mt-8">
+          <Link to={"/dashboard"}>
+            <button className="btn btn-neutral btn-sm lg:btn-md max-sm:btn-sm lg:text-lg text-lp-color bg-ds-color mt-5 lg:mt-8">
               Let’s Explore
             </button>
           </Link>

@@ -18,7 +18,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   // state
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
 
   /// google Provider
@@ -26,21 +26,25 @@ const AuthProvider = ({ children }) => {
 
   //   create user
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //   login user
   const logIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   /// google user login
   const googleLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   // sign out user
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -66,6 +70,7 @@ const AuthProvider = ({ children }) => {
       //set the user in state
       console.log("user observe by onAuthStateChanged )::::> ", presentUser);
       setUser(presentUser);
+      setLoading(false);
     });
     return () => {
       return unSubscribe();
