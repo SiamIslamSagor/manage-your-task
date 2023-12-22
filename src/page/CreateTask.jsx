@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import useDataContext from "../hooks/useDataContext";
+import useAxiosPublic from "../hooks/useAxios";
 
 const CreateTask = () => {
   // state
@@ -10,6 +11,8 @@ const CreateTask = () => {
 
   // context data
   const { user } = useDataContext();
+  const axiosPublic = useAxiosPublic();
+
   // hook form
   const {
     register,
@@ -20,7 +23,7 @@ const CreateTask = () => {
 
   // handler
   const onSubmit = data => {
-    // const toastId = toast.loading("processing...");
+    const toastId = toast.loading("processing...");
 
     const allData = {
       ...data,
@@ -30,6 +33,22 @@ const CreateTask = () => {
       name: user?.displayName,
     };
     console.log(allData);
+
+    // send data in server side
+    axiosPublic
+      .post("/create-task", allData)
+      .then(res => {
+        if (res.data.insertedId) {
+          reset();
+          console.log("task post done");
+          toast.success("task created successfully.", {
+            id: toastId,
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     ///////////
   };
