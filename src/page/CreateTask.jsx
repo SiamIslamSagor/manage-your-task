@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import useDataContext from "../hooks/useDataContext";
 
 const CreateTask = () => {
   // state
   const [priority, setPriority] = useState("high");
 
   // context data
-
+  const { user } = useDataContext();
   // hook form
   const {
     register,
@@ -19,9 +20,16 @@ const CreateTask = () => {
 
   // handler
   const onSubmit = data => {
-    console.log({ ...data, priority, status: "todo" });
+    // const toastId = toast.loading("processing...");
 
-    const toastId = toast.loading("processing...");
+    const allData = {
+      ...data,
+      priority,
+      status: "todo",
+      email: user?.email,
+      name: user?.displayName,
+    };
+    console.log(allData);
 
     ///////////
   };
@@ -89,7 +97,7 @@ const CreateTask = () => {
                       )}
                     </div>
 
-                    <div className="lg:flex w-full max-w-sm sm:-ml-6 max-sm:px-2  gap-1 ">
+                    <div className="lg:flex w-full max-w-sm mob:-ml-6 max-sm:px-2  gap-1 ">
                       <div className="lg:w-1/2 max-w-md w-full lg:max-w-lg">
                         <label className="label">
                           <span className="label-text">Task Deadlines</span>
