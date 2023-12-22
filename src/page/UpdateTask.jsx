@@ -82,7 +82,6 @@ const UpdateTask = () => {
   return (
     <div className="flex flex-col item-center justify-center border p-5 my-10">
       <h1 className="text-4xl text-center font-bold">UpdateTask</h1>
-      <p>id is: {id}</p>
       <div className="container mx-auto">
         <div>
           <div className="max-w-lg mx-auto p-10">
@@ -186,7 +185,7 @@ const UpdateTask = () => {
 
                   <div className="my-8 w-full max-w-md lg:max-w-lg px-2 rounded-full">
                     <button className="btn btn-neutral w-full max-w-sm lg:max-w-lg  lg:text-base">
-                      Create
+                      Update
                     </button>
                   </div>
                 </form>
