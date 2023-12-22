@@ -24,20 +24,20 @@ const Dashboard = () => {
           </li>
         </ul> */}
 
-        <div className="route-div my-5">
+        <div className="route-div my-5 text-center">
           <NavLink to={"/dashboard"} end>
             Task Manager
           </NavLink>
         </div>
-        <div className="route-div my-5">
+        <div className="route-div my-5 text-center">
           <NavLink to={"/dashboard/create-task"}>Create Task</NavLink>
         </div>
-        <div className="route-div my-5">
+        <div className="route-div my-5 text-center">
           <NavLink to={"/dashboard/manage-task"}>Manage Task</NavLink>
         </div>
 
         <div className="divider before:bg-dp-color after:bg-dp-color">or</div>
-        <div className="route-div my-5">
+        <div className="route-div my-5 text-center">
           <NavLink to={"/"}>Home</NavLink>
         </div>
       </div>

@@ -16,7 +16,8 @@ div > a.active {
 }
 
 .route-div > a {
-  opacity: 0.3;
+  opacity: 0.4;
+  font-weight: 600;
 }
 
 .route-div > a:hover {
