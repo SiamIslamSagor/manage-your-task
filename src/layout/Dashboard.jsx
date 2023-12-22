@@ -11,16 +11,35 @@ const Dashboard = () => {
         <div>
           <img className="w-full p-5" src={logo} alt="" />
         </div>
-        <div>
-          <NavLink to={"/"}>Task Manager</NavLink>
+
+        {/* <ul>
+          <li>
+            <NavLink to={"/dashboard"}>Task Manager</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/create-task"}>Create Task</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/manage-task"}>Manage Task</NavLink>
+          </li>
+        </ul> */}
+
+        <div className="route-div my-5">
+          <NavLink to={"/dashboard"} end>
+            Task Manager
+          </NavLink>
         </div>
-        <div>
-          <NavLink to={"/"}>Create Task</NavLink>
+        <div className="route-div my-5">
+          <NavLink to={"/dashboard/create-task"}>Create Task</NavLink>
         </div>
-        <div>
-          <NavLink to={"/"}>Manage Task</NavLink>
+        <div className="route-div my-5">
+          <NavLink to={"/dashboard/manage-task"}>Manage Task</NavLink>
         </div>
-        <div className="divider"></div>
+
+        <div className="divider before:bg-dp-color after:bg-dp-color">or</div>
+        <div className="route-div my-5">
+          <NavLink to={"/"}>Home</NavLink>
+        </div>
       </div>
       <div className="md:pl-[265px] w-full">
         <Outlet />
