@@ -2,9 +2,44 @@ import { useState } from "react";
 import textLogo from "../assets/taskText.png";
 import { Squash as Hamburger } from "hamburger-react";
 import { NavLink } from "react-router-dom";
+import useDataContext from "../hooks/useDataContext";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  // state
   const [isOpen, setOpen] = useState(false);
+
+  // context data
+  const { user, logOut } = useDataContext();
+
+  // handler
+
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be log out this account form this device!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Log out.",
+    }).then(result => {
+      if (result.isConfirmed) {
+        // hit delete api in server side by specific id;
+        // ////////////////
+        const toastId = toast.loading("processing...");
+        console.log("clicked");
+        logOut()
+          .then(() => {
+            toast.success("Log out successfully.", { id: toastId });
+          })
+          .catch(() => {
+            toast.error("Log out Failed.", { id: toastId });
+          });
+      }
+    });
+  };
 
   const lgRoutes = (
     <>
@@ -32,11 +67,23 @@ const Navbar = () => {
         </NavLink>
       </div>
 
-      <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="text-ds-color" to={"/auth/login"}>
-          Login
-        </NavLink>
-      </div>
+      {user ? (
+        <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
+          <button
+            onClick={handleLogOut}
+            className="text-ds-color"
+            to={"/auth/login"}
+          >
+            Log Out
+          </button>
+        </div>
+      ) : (
+        <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
+          <NavLink className="text-ds-color" to={"/auth/login"}>
+            Login
+          </NavLink>
+        </div>
+      )}
     </>
   );
 
@@ -72,20 +119,31 @@ const Navbar = () => {
       <div className="nav-div flex item-center justify-center border p-5 my-2">
         <NavLink
           className="text-ds-color text-4xl text-center font-bold"
-          to={"/dashboard/task-manager"}
+          to={"/dashboard"}
         >
           Dashboard
         </NavLink>
       </div>
 
-      <div className="nav-div flex item-center justify-center border p-5 my-2">
-        <NavLink
-          className="text-ds-color text-4xl text-center font-bold"
-          to={"/auth/login"}
-        >
-          Login
-        </NavLink>
-      </div>
+      {user ? (
+        <div className="nav-div flex item-center justify-center border p-5 my-2">
+          <button
+            onClick={handleLogOut}
+            className="text-ds-color text-4xl text-center font-bold"
+          >
+            Log Out
+          </button>
+        </div>
+      ) : (
+        <div className="nav-div flex item-center justify-center border p-5 my-2">
+          <NavLink
+            className="text-ds-color text-4xl text-center font-bold"
+            to={"/auth/login"}
+          >
+            Login
+          </NavLink>
+        </div>
+      )}
     </>
   );
 
@@ -99,6 +157,11 @@ const Navbar = () => {
               <a href="/" className="cursor-pointer">
                 <img className="w-36 lg:w-44 " src={textLogo} alt="" />
               </a>
+              {user && (
+                <div className="w-16 mask mask-squircle">
+                  <img className="" src={user?.photoURL} alt="" />
+                </div>
+              )}
             </div>
 
             {/* lg routes , thats show when display > lg */}

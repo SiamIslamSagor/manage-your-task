@@ -30,3 +30,29 @@ a:hover::after {
 .anim-div > div > svg {
   max-width: 700px !important;
 }
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000, #1e4d92) content-box;
+  mask: repeating-conic-gradient(
+      #0000 0deg,
+      #000 1deg calc(360deg / 10 - 10deg - 1deg),
+      #0000 calc(360deg / 10 - 10deg) calc(360deg / 10)
+    ),
+    radial-gradient(
+      farthest-side,
+      #0000 calc(98% - 10px),
+      #000 calc(100% - 10px)
+    );
+  mask-composite: intersect;
+  -webkit-mask-composite: destination-in;
+  animation: spin 1000ms infinite steps(10);
+}
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}

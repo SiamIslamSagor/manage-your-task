@@ -9,6 +9,7 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 import Auth from "../layout/Auth";
 import Main from "../layout/Main";
+import PrivetRoute from "./PrivetRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,11 +28,11 @@ const router = createBrowserRouter([
     element: <Auth />,
     children: [
       {
-        path: "/auth/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/auth/register",
+        path: "register",
         element: <Register />,
       },
     ],
@@ -39,18 +40,22 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     errorElement: <ErrorPage />,
-    element: <Dashboard />,
+    element: (
+      <PrivetRoute>
+        <Dashboard />
+      </PrivetRoute>
+    ),
     children: [
       {
-        path: "/dashboard/task-manager",
+        index: true,
         element: <TaskManager />,
       },
       {
-        path: "/dashboard/create-task",
+        path: "create-task",
         element: <CreateTask />,
       },
       {
-        path: "/dashboard/manage-task",
+        path: "manage-task",
         element: <ManageTask />,
       },
     ],
