@@ -1,98 +1,22 @@
 import { HiDotsVertical } from "react-icons/hi";
+import useTask from "../hooks/useTask";
+import { useState } from "react";
 
 const ManageTask = () => {
-  const demoData = [
-    {
-      deadlines: "5pm",
-      description: "Code doing",
-      email: "mama@mami.com",
-      name: "mama",
-      priority: "high",
-      status: "todo",
-      title: "Code",
-    },
-    {
-      deadlines: "6pm",
-      description: "Bug fixing",
-      email: "papa@mami.com",
-      name: "papa",
-      priority: "medium",
-      status: "ongoing",
-      title: "Bug Fixing",
-    },
-    {
-      deadlines: "3pm",
-      description: "UI design",
-      email: "sister@mami.com",
-      name: "sister",
-      priority: "low",
-      status: "completed",
-      title: "UI Design",
-    },
-    {
-      deadlines: "4pm",
-      description: "Database optimization",
-      email: "brother@mami.com",
-      name: "brother",
-      priority: "high",
-      status: "todo",
-      title: "DB Optimization",
-    },
-    {
-      deadlines: "2pm",
-      description: "Testing",
-      email: "friend@mami.com",
-      name: "friend",
-      priority: "medium",
-      status: "ongoing",
-      title: "Testing",
-    },
-    {
-      deadlines: "1pm",
-      description: "Documentation",
-      email: "colleague@mami.com",
-      name: "colleague",
-      priority: "low",
-      status: "completed",
-      title: "Documentation",
-    },
-    {
-      deadlines: "7pm",
-      description: "Feature development",
-      email: "manager@mami.com",
-      name: "manager",
-      priority: "high",
-      status: "todo",
-      title: "Feature Development",
-    },
-    {
-      deadlines: "12pm",
-      description: "Code review",
-      email: "senior@mami.com",
-      name: "senior",
-      priority: "medium",
-      status: "ongoing",
-      title: "Code Review",
-    },
-    {
-      deadlines: "10am",
-      description: "Meeting with clients",
-      email: "client@mami.com",
-      name: "client",
-      priority: "low",
-      status: "completed",
-      title: "Client Meeting",
-    },
-    {
-      deadlines: "8pm",
-      description: "Deployment",
-      email: "devops@mami.com",
-      name: "devops",
-      priority: "high",
-      status: "todo",
-      title: "Deployment",
-    },
-  ];
+  // state
+  const [clickedTaskData, setClickedTaskData] = useState("");
+  // hooks
+  const { allTaskData } = useTask();
+  console.log(allTaskData);
+
+  // handler
+  const handleDetails = id => {
+    document.getElementById("my_modal_3").showModal();
+    console.log(id);
+    const clickedTask = allTaskData.find(task => task._id === id);
+    setClickedTaskData(clickedTask);
+    console.log(clickedTask);
+  };
 
   return (
     <div className="flex flex-col item-center justify-center border p-5 my-10">
@@ -102,43 +26,26 @@ const ManageTask = () => {
           <h3 className="mb-3 text-center bg-green-600 text-2xl font-medium text-white rounded-xl leading-10">
             To-Do
           </h3>
+          {/* todo box */}
           <div className="mx-2">
             <ul>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
+              {allTaskData &&
+                allTaskData?.map(task => (
+                  <li
+                    key={task._id}
+                    className={`${
+                      task.status === "todo" ? "flex" : "hidden"
+                    } flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium`}
+                  >
+                    {task.title}
+                    <span>
+                      <HiDotsVertical
+                        onClick={() => handleDetails(task._id)}
+                        className="btn btn-xs cursor-pointer btn-ghost btn-circle"
+                      />
+                    </span>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
@@ -146,43 +53,26 @@ const ManageTask = () => {
           <h3 className="mb-3 text-center bg-green-600 text-2xl font-medium text-white rounded-xl leading-10">
             Ongoing
           </h3>
+          {/* ongoing box */}
           <div className="mx-2">
             <ul>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
+              {allTaskData &&
+                allTaskData?.map(task => (
+                  <li
+                    key={task._id}
+                    className={`${
+                      task.status === "ongoing" ? "flex" : "hidden"
+                    } flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium`}
+                  >
+                    {task.title}
+                    <span>
+                      <HiDotsVertical
+                        onClick={() => handleDetails(task._id)}
+                        className="btn btn-xs cursor-pointer btn-ghost btn-circle"
+                      />
+                    </span>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
@@ -190,47 +80,49 @@ const ManageTask = () => {
           <h3 className="mb-3 text-center bg-green-600 text-2xl font-medium text-white rounded-xl leading-10">
             Completed
           </h3>
+          {/* completed box */}
           <div className="mx-2">
             <ul>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
-              <li className="flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium">
-                Lorem dolor sit okey Lorem ipsum dolor, sit amet consectetur
-                adipisicing..
-                <span>
-                  <HiDotsVertical />
-                </span>
-              </li>
+              {allTaskData &&
+                allTaskData?.map(task => (
+                  <li
+                    key={task._id}
+                    className={`${
+                      task.status === "completed" ? "flex" : "hidden"
+                    } flex items-center justify-between bg-gray-800 my-1 p-3 rounded-2xl text-white font-medium`}
+                  >
+                    {task.title}
+                    <span>
+                      <HiDotsVertical
+                        onClick={() => handleDetails(task._id)}
+                        className="btn btn-xs cursor-pointer btn-ghost btn-circle"
+                      />
+                    </span>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
       </div>
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <h3 className="font-bold text-lg">Title: {clickedTaskData?.title}</h3>
+          <p className="py-2">Description: {clickedTaskData?.description}</p>
+          <p className="py-1">Deadline : {clickedTaskData?.deadlines}</p>
+          <p className="py-1">Status : {clickedTaskData?.status}</p>
+          <p>_id is : {clickedTaskData?._id}</p>
+          <div className="flex justify-end gap-5">
+            <button className="btn btn-sm btn-neutral px-5">Update</button>
+            <button className="btn btn-sm btn-warning px-5">Delete</button>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };
