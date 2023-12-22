@@ -63,7 +63,7 @@ const Navbar = () => {
       </div>
 
       <div className="nav-div lg:text-xl xl:text-2xl 2xl:text-3xl lg:mx-3 xl:mx-5 2xl:mx-8 font-medium">
-        <NavLink className="text-ds-color" to={"/dashboard/task-manager"}>
+        <NavLink className="text-ds-color" to={"/dashboard"}>
           Dashboard
         </NavLink>
       </div>

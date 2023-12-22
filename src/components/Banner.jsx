@@ -28,7 +28,7 @@ const Banner = () => {
           within our powerful task management interface.
         </p>
 
-        <Link to={"/auth/login"}>
+        <Link to={"/dashboard"}>
           <button className="btn btn-neutral max-sm:btn-sm md:text-lg text-lp-color bg-ds-color mt-5 lg:mt-8">
             Let’s Explore
           </button>
