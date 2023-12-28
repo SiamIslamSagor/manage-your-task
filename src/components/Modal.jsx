@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { IoCloseCircleSharp } from "react-icons/io5";
 const Modal = ({ isOpen, onClose, children }) => {
-  const modalClasses = isOpen ? "animate-zoom-in" : "animate-fade-out";
+  //   const modalClasses = isOpen ? "animate-zoom-in" : "animate-fade-out";
 
   if (!isOpen) {
     return null;

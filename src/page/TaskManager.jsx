@@ -44,16 +44,40 @@ const TaskManager = () => {
                   Open Modal
                 </button>
                 <Modal isOpen={isModalOpen} onClose={closeModal}>
-                  <div className="max-w-sm mx-auto">
+                  <div className="w-96 mx-auto">
                     <h2 className="text-2xl font-bold mb-4">Modal Content</h2>
-                    <p>This is the content of the modal.</p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Possimus, deleniti, labore tempora repellat quae illo
-                      perspiciatis illum necessitatibus fugit temporibus nemo
-                      qui, adipisci ex! Atque quis aliquam tempore eos
-                      exercitationem.
-                    </p>
+                    <p className="mb-5">This is the content of the modal.</p>
+                    <div className="border-4 p-20">
+                      <span className="w-4 h-6 bg-ocean-breeze-1 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-ocean-breeze-2 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-ocean-breeze-3 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-ocean-breeze-4 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-ocean-breeze-5 p-4 m-2"></span>
+                      <p className="p-5" />
+                      <span className="w-4 h-6 bg-minty-fresh-1 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-minty-fresh-2 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-minty-fresh-3 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-minty-fresh-4 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-minty-fresh-5 p-4 m-2"></span>
+                      <p className="p-5" />
+                      <span className="w-4 h-6 bg-sunset-vibes-1 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-sunset-vibes-2 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-sunset-vibes-3 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-sunset-vibes-4 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-sunset-vibes-5 p-4 m-2"></span>
+                      <p className="p-5" />
+                      <span className="w-4 h-6 bg-elegant-grayscale-1 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-elegant-grayscale-2 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-elegant-grayscale-3 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-elegant-grayscale-4 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-elegant-grayscale-5 p-4 m-2"></span>
+                      <p className="p-5" />
+                      <span className="w-4 h-6 bg-nature-inspired-1 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-nature-inspired-2 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-nature-inspired-3 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-nature-inspired-4 p-4 m-2"></span>
+                      <span className="w-4 h-6 bg-nature-inspired-5 p-4 m-2"></span>
+                    </div>
                   </div>
                 </Modal>
               </div>
