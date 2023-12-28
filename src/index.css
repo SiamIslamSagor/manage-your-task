@@ -48,6 +48,16 @@ a:hover::after {
   max-width: 700px !important;
 }
 
+/* modal */
+
+.animate-zoom-in {
+  animation: zoom-in 0.3s ease-out;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-out;
+}
+
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -71,5 +81,25 @@ a:hover::after {
 @keyframes spin {
   to {
     transform: rotate(1turn);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
